@@ -26,7 +26,7 @@ def prepare_headers():
     load_dotenv()
     foundry_api_key = os.getenv('FOUNDRY_API_KEY')
     if not foundry_api_key:
-        raise ValueError("FOUNDRY_API_KEY is not set in the environment or .env file")
+        raise ValueError("FOUNDRY_API_KEY is not set in the environment or .env file. Go on the page to edit your module and find it there, just above the Save button.")
 
     return {
         'Content-Type': 'application/json',
