@@ -18,8 +18,8 @@ if ! command -v nvm &> /dev/null; then
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 fi
 
-nvm install 18
-nvm use 18
+nvm install node
+nvm use node
 
 echo "Ensuring dependencies..."
 npm install
