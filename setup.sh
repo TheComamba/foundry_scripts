@@ -22,13 +22,14 @@ if ! command -v nvm &> /dev/null; then
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 fi
 
+# Install and activate node first (needed for npm)
+nvm install node
+nvm use node
+
 if ! command -v pnpm &> /dev/null; then
     echo "pnpm is not installed. Installing..."
     npm install -g pnpm@latest-10
 fi
-
-nvm install node
-nvm use node
 
 echo "Ensuring dependencies..."
 pnpm install
