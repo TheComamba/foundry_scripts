@@ -5,6 +5,10 @@ set -e
 # Change to git root directory
 cd "$(git rev-parse --show-toplevel)"
 
+# Create symbolic links for .npmrc and pnpm-workspace.yaml
+ln -sf foundry_scripts/.npmrc .npmrc
+ln -sf foundry_scripts/pnpm-workspace.yaml pnpm-workspace.yaml
+
 if ! command -v curl &> /dev/null; then
     echo "curl is not installed. Installing..."
     sudo apt-get update
@@ -18,11 +22,16 @@ if ! command -v nvm &> /dev/null; then
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 fi
 
+if ! command -v pnpm &> /dev/null; then
+    echo "pnpm is not installed. Installing..."
+    npm install -g pnpm@latest-10
+fi
+
 nvm install node
 nvm use node
 
 echo "Ensuring dependencies..."
-npm install
+pnpm install
 
 echo Setup finished. You probably need to call
 echo . ~/.bashrc

@@ -47,7 +47,7 @@ fi
 nvm use node || nvm install node
 
 # Update npm packages
-npm update
+pnpm update
 
-# Update git submodule (this is the last step, in order not to interfere with the script that is currently executed.)
+# Update git submodule (this is the last step, in order not to interfere with the script that is currently being executed.)
 git submodule update --remote
